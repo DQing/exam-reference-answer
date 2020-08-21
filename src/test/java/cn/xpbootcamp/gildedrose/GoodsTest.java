@@ -75,4 +75,13 @@ public class GoodsTest {
         Assert.assertEquals(-1, goods.getSellIn());
         Assert.assertEquals(0, goods.getQuality());
     }
+
+    @Test
+    public void should_quality_is_0_when_one_day_passed_given_backstage_pass_out_sell() {
+        Goods goods = new Goods("Backstage Pass", -1, 0);
+        goods.updateByDay();
+
+        Assert.assertEquals(-2, goods.getSellIn());
+        Assert.assertEquals(0, goods.getQuality());
+    }
 }
