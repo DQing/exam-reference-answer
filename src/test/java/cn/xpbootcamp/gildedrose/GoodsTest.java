@@ -6,38 +6,38 @@ import org.junit.Test;
 public class GoodsTest {
     @Test
     public void should_decrease_1_of_sellIn_and_quality_when_one_day_passed_given_regular_goods_in_sell_and_quality_is_5() {
-        Goods goods = new Goods("Regular", 10, 5);
-        goods.updateByDay();
+        RegularGoods regularGoods = new RegularGoods(10, 5);
+        regularGoods.updateByDay();
 
-        Assert.assertEquals(9, goods.getSellIn());
-        Assert.assertEquals(4, goods.getQuality());
+        Assert.assertEquals(9, regularGoods.getSellIn());
+        Assert.assertEquals(4, regularGoods.getQuality());
     }
 
     @Test
     public void should_quality_keep_0_and_sellIn_decrease_1_when_one_day_passed_given_regular_goods_in_sell_and_quality_is_0() {
-        Goods goods = new Goods("Regular", 10, 0);
-        goods.updateByDay();
+        RegularGoods regularGoods = new RegularGoods(10, 0);
+        regularGoods.updateByDay();
 
-        Assert.assertEquals(9, goods.getSellIn());
-        Assert.assertEquals(0, goods.getQuality());
+        Assert.assertEquals(9, regularGoods.getSellIn());
+        Assert.assertEquals(0, regularGoods.getQuality());
     }
 
     @Test
     public void should_quality_decrease_2_and_sellIn_decrease_1_when_one_day_passed_given_regular_goods_will_out_sell_and_quality_is_10() {
-        Goods goods = new Goods("Regular", 0, 10);
-        goods.updateByDay();
+        RegularGoods regularGoods = new RegularGoods(0, 10);
+        regularGoods.updateByDay();
 
-        Assert.assertEquals(-1, goods.getSellIn());
-        Assert.assertEquals(8, goods.getQuality());
+        Assert.assertEquals(-1, regularGoods.getSellIn());
+        Assert.assertEquals(8, regularGoods.getQuality());
     }
 
     @Test
     public void should_quality_keep_0_and_sellIn_decrease_1_when_one_day_passed_given_regular_goods_will_out_sell_and_quality_is_0() {
-        Goods goods = new Goods("Regular", 0, 0);
-        goods.updateByDay();
+        RegularGoods regularGoods = new RegularGoods(0, 0);
+        regularGoods.updateByDay();
 
-        Assert.assertEquals(-1, goods.getSellIn());
-        Assert.assertEquals(0, goods.getQuality());
+        Assert.assertEquals(-1, regularGoods.getSellIn());
+        Assert.assertEquals(0, regularGoods.getQuality());
     }
 
     @Test

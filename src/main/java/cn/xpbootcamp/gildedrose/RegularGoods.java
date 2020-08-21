@@ -1,33 +1,32 @@
 package cn.xpbootcamp.gildedrose;
 
-public class Goods {
-    private final String name;
+public class RegularGoods {
     private int sellIn;
     private int quality;
 
-    public Goods(String name, int sellIn, int quality) {
-        this.name = name;
+    public RegularGoods(int sellIn, int quality) {
         this.sellIn = sellIn;
         this.quality = quality;
     }
 
-    public void updateByDay() {
-        if (isRegularGoods()) {
-            decreaseQuality();
-            decreaseSellIn();
-            if (isExpired()) {
-                decreaseQuality();
-            }
-        }
+    public int getSellIn() {
+        return sellIn;
+    }
 
+    public int getQuality() {
+        return quality;
+    }
+
+    public void updateByDay() {
+        decreaseQuality();
+        decreaseSellIn();
+        if (isExpired()) {
+            decreaseQuality();
+        }
     }
 
     private boolean isExpired() {
         return sellIn < 0;
-    }
-
-    private boolean isRegularGoods() {
-        return name.equals("Regular");
     }
 
     private void decreaseSellIn() {
@@ -40,11 +39,4 @@ public class Goods {
         }
     }
 
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    public int getQuality() {
-        return quality;
-    }
 }
