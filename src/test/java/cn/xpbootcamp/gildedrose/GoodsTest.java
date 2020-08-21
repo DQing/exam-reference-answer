@@ -21,4 +21,13 @@ public class GoodsTest {
         Assert.assertEquals(9, goods.getSellIn());
         Assert.assertEquals(0, goods.getQuality());
     }
+
+    @Test
+    public void should_quality_decrease_2_and_sellIn_decrease_1_when_one_day_passed_given_regular_goods_will_out_sell_and_quality_is_10() {
+        Goods goods = new Goods("Regular", 0, 10);
+        goods.updateByDay();
+
+        Assert.assertEquals(-1, goods.getSellIn());
+        Assert.assertEquals(8, goods.getQuality());
+    }
 }

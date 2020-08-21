@@ -11,9 +11,16 @@ public class Goods {
 
     public void updateByDay() {
         if (quality > 0) {
-            quality = quality - 1;
+            decreaseQuality();
         }
         sellIn = sellIn - 1;
+        if (sellIn < 0) {
+            decreaseQuality();
+        }
+    }
+
+    private void decreaseQuality() {
+        quality = quality - 1;
     }
 
     public int getSellIn() {
