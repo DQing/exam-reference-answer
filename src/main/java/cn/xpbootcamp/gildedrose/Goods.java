@@ -1,7 +1,7 @@
 package cn.xpbootcamp.gildedrose;
 
 public class Goods {
-    private String name;
+    private final String name;
     private int sellIn;
     private int quality;
 
@@ -12,7 +12,7 @@ public class Goods {
     }
 
     public void updateByDay() {
-        if (name.equals("Backstage Pass")) {
+        if (isBackstagePass()) {
             increaseQuality();
             if (sellIn <= 10) {
                 increaseQuality();
@@ -21,16 +21,31 @@ public class Goods {
                 increaseQuality();
             }
             decreaseSellIn();
-            if (sellIn < 0) {
+            if (isExpired()) {
                 quality = 0;
             }
             return;
         }
-        decreaseQuality();
-        decreaseSellIn();
-        if (sellIn < 0) {
+        if (isRegularGoods()) {
             decreaseQuality();
+            decreaseSellIn();
+            if (isExpired()) {
+                decreaseQuality();
+            }
         }
+
+    }
+
+    private boolean isExpired() {
+        return sellIn < 0;
+    }
+
+    private boolean isRegularGoods() {
+        return name.equals("Regular");
+    }
+
+    private boolean isBackstagePass() {
+        return name.equals("Backstage Pass");
     }
 
     private void increaseQuality() {
