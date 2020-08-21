@@ -42,55 +42,55 @@ public class GoodsTest {
 
     @Test
     public void should_quality_increase_1_when_one_day_passed_given_backstage_pass_sellIn_more_than_10() {
-        Goods goods = new Goods("Backstage Pass", 11, 10);
-        goods.updateByDay();
+        BackstagePass backstagePass = new BackstagePass(11, 10);
+        backstagePass.updateByDay();
 
-        Assert.assertEquals(10, goods.getSellIn());
-        Assert.assertEquals(11, goods.getQuality());
+        Assert.assertEquals(10, backstagePass.getSellIn());
+        Assert.assertEquals(11, backstagePass.getQuality());
     }
 
     @Test
     public void should_quality_increase_2_when_one_day_passed_given_backstage_pass_sellIn_more_than_5() {
-        Goods goods = new Goods("Backstage Pass", 6, 10);
-        goods.updateByDay();
+        BackstagePass backstagePass = new BackstagePass(6, 10);
+        backstagePass.updateByDay();
 
-        Assert.assertEquals(5, goods.getSellIn());
-        Assert.assertEquals(12, goods.getQuality());
+        Assert.assertEquals(5, backstagePass.getSellIn());
+        Assert.assertEquals(12, backstagePass.getQuality());
     }
 
     @Test
     public void should_quality_increase_3_when_one_day_passed_given_backstage_pass_sellIn_less_than_5() {
-        Goods goods = new Goods("Backstage Pass", 1, 10);
-        goods.updateByDay();
+        BackstagePass backstagePass = new BackstagePass(1, 10);
+        backstagePass.updateByDay();
 
-        Assert.assertEquals(0, goods.getSellIn());
-        Assert.assertEquals(13, goods.getQuality());
+        Assert.assertEquals(0, backstagePass.getSellIn());
+        Assert.assertEquals(13, backstagePass.getQuality());
     }
 
     @Test
     public void should_quality_is_0_when_one_day_passed_given_backstage_pass_sellIn_is_0() {
-        Goods goods = new Goods("Backstage Pass", 0, 10);
-        goods.updateByDay();
+        BackstagePass backstagePass = new BackstagePass(0, 10);
+        backstagePass.updateByDay();
 
-        Assert.assertEquals(-1, goods.getSellIn());
-        Assert.assertEquals(0, goods.getQuality());
+        Assert.assertEquals(-1, backstagePass.getSellIn());
+        Assert.assertEquals(0, backstagePass.getQuality());
     }
 
     @Test
     public void should_quality_is_0_when_one_day_passed_given_backstage_pass_out_sell() {
-        Goods goods = new Goods("Backstage Pass", -1, 0);
-        goods.updateByDay();
+        BackstagePass backstagePass = new BackstagePass(-1, 0);
+        backstagePass.updateByDay();
 
-        Assert.assertEquals(-2, goods.getSellIn());
-        Assert.assertEquals(0, goods.getQuality());
+        Assert.assertEquals(-2, backstagePass.getSellIn());
+        Assert.assertEquals(0, backstagePass.getQuality());
     }
 
     @Test
     public void should_quality_is_50_when_one_day_passed_given_backstage_pass_in_sell_and_quality_is_50() {
-        Goods goods = new Goods("Backstage Pass", 11, 50);
-        goods.updateByDay();
+        BackstagePass backstagePass = new BackstagePass(11, 50);
+        backstagePass.updateByDay();
 
-        Assert.assertEquals(10, goods.getSellIn());
-        Assert.assertEquals(50, goods.getQuality());
+        Assert.assertEquals(10, backstagePass.getSellIn());
+        Assert.assertEquals(50, backstagePass.getQuality());
     }
 }

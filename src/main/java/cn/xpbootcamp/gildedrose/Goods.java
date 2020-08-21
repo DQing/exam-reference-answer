@@ -12,20 +12,6 @@ public class Goods {
     }
 
     public void updateByDay() {
-        if (isBackstagePass()) {
-            increaseQuality();
-            if (sellIn <= 10) {
-                increaseQuality();
-            }
-            if (sellIn <= 5) {
-                increaseQuality();
-            }
-            decreaseSellIn();
-            if (isExpired()) {
-                quality = 0;
-            }
-            return;
-        }
         if (isRegularGoods()) {
             decreaseQuality();
             decreaseSellIn();
@@ -42,16 +28,6 @@ public class Goods {
 
     private boolean isRegularGoods() {
         return name.equals("Regular");
-    }
-
-    private boolean isBackstagePass() {
-        return name.equals("Backstage Pass");
-    }
-
-    private void increaseQuality() {
-        if (quality < 50) {
-            quality = quality + 1;
-        }
     }
 
     private void decreaseSellIn() {
