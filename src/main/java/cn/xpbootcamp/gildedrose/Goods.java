@@ -34,7 +34,9 @@ public class Goods {
     }
 
     private void increaseQuality() {
-        quality = quality + 1;
+        if (quality < 50) {
+            quality = quality + 1;
+        }
     }
 
     private void decreaseSellIn() {
